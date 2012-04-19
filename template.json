@@ -1,0 +1,39 @@
+/*
+Refer to http://www.gnu.org/software/gengetopt/gengetopt.html#Basic-Usage
+*/
+
+{
+	"package": "jed",
+	"version": "0.01",
+	"purpose": "The JSON stream editor", /* Optional */
+	"usage" : "jed.js ....", /* Optional */
+	"description" : "The JSON stream editor, /* Optional */
+
+	"args" : "--To --the --command --line --processor --itself", /* Optional */
+	
+	"data" : [
+		{ 
+			"tag" : "text" ,
+			"value" : "arbitrary text, with line breaks if you want ..."
+		},
+
+		{ 
+			"tag" : "section" ,
+			"name" : "new section",
+			"desc" : "description of the new section"
+		},
+
+		{ 
+			"tag" : "option",
+			"..." : "..."
+		}
+
+		{
+			"tag" : "option-tag",
+			"long" : "--asd",
+			"short" : "a",
+			"desc" : "description of a, asd",
+			"default" : "on" /* or "off" */ 
+		}
+	]
+}
