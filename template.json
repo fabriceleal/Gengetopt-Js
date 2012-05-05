@@ -21,11 +21,13 @@
 
 		{ 
 			"tag" : "option",
+			"name" : "option_opt",
 			"..." : "..."
 		},
 
 		{
 			"tag" : "option-flag",
+			"name" : "option_asd",
 			"long" : "asd",
 			"short" : "a",
 			"desc" : "description of a, asd",

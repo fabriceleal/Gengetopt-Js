@@ -9,7 +9,8 @@ var fs = require('fs');
 	A complex parameter can be a enum.
 */
 
-//FIXME: If the value of a arg starts with --, there will be issues ...
+//FIXME If the value of a arg starts with --, there will be issues ...
+//FIXME For now, don't allow multiple flags like this: -abc
 var isParameterName = function(current){
 	return isLongParameterName(current) || isShortParameterName(current);
 }
@@ -36,18 +37,23 @@ var valued_parameter = {
 	next: function(parameter_name, next_value){
 		// FIXME Assume is a value
 		// Generate state to read and store the value of the parameter
-		return {
-			parse: 	function(parsed, next_value){
-					console.log('Parsing '+ next_value +' as parameter_value of ' + parameter_name)
-					// Put value
-					parsed[parameter_name] = next_value;
-					return parsed;
-				},
-			next:	function(parameter_value){
-					// FIXME Assume is another name of a parameter ...
-					return valued_parameter;
-				}
-		}
+		//if(isParameterName(next_value)){
+			// TODO Test if this is flag. If not, throw. If it is, switch the default.
+		//}else{
+
+			return {
+				parse: 	function(parsed, next_value){
+						console.log('Parsing '+ next_value +' as parameter_value of ' + parameter_name)
+						// Put value
+						parsed[parameter_name] = next_value;
+						return parsed;
+					},
+				next:	function(parameter_value){
+						// FIXME Assume is another name of a parameter ...
+						return valued_parameter;
+					}
+			};
+		//}
 	}
 }
 
@@ -95,6 +101,8 @@ exports.parse = function(configFile, args){
 
 		var processedArgs = {};
 		var lastProcessed = null;
+
+		// init processedArgs with defaults of the commands
 		
 		args.forEach(function(item, idx, arr){
 
