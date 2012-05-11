@@ -1,0 +1,51 @@
+start = parameters
+
+parameters = head:parameter tail:parameter_leading_whitespace*
+        { return [head].concat(tail);}
+         
+parameter_leading_whitespace = (' ')* head:parameter
+        { return head; }
+
+parameter = '/' stuff:parameter_struct
+        { return stuff; }
+        / '--' stuff:parameter_struct
+        { return stuff; }
+        / '-' stuff:parameter_struct
+        { return stuff; }
+        
+
+parameter_struct = name:parameter_name value:(parameter_separator parameter_value)? 
+          { return [name, value[1]];}
+
+
+parameter_name = name:parameter_name_char+
+        { return name.join(''); }
+
+parameter_separator = ':'
+                  / '='
+                  / ' '
+
+parameter_value = "'" value:(!["'"] .)* '\''
+               { return value.reduce(function(t, i){ return t+i.join('') }, ""); }
+              / '"' value:(!['"'] .)* '"'
+               { return value.reduce(function(t, i){ return t+i.join('') }, ""); }
+              / value:(parameter_value_first_char parameter_value_char*)?
+               {
+                  if(value.length == 0)
+                      return '';
+
+                  return value[0] + value.slice(1).reduce(function(t, i){ return t+i.join('') }, "");
+
+                }
+              
+
+parameter_name_char = char:(![' ':=] .)
+ {return char.join('')}
+
+parameter_value_first_char = char:(![' '/:=-] .)
+ { return char.join('')}
+ 
+parameter_value_char =  char:(!' ' .)
+ { return char.join('');}
+
+
