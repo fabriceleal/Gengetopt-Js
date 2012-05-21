@@ -25,9 +25,9 @@ parameter_separator = ':'
                   / '='
                   / ' '
 
-parameter_value = "'" value:(!["'"] .)* '\''
+parameter_value = '\'' value:(!('\'') .)* '\''
                { return value.reduce(function(t, i){ return t+i.join('') }, ""); }
-              / '"' value:(!['"'] .)* '"'
+              / '\"' value:(!('\"') .)* '\"'
                { return value.reduce(function(t, i){ return t+i.join('') }, ""); }
               / value:(parameter_value_first_char parameter_value_char*)?
                {

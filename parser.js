@@ -368,13 +368,13 @@ exports.parse = function (input, startRule) {
           pos2 = pos;
           pos3 = pos;
           reportFailures++;
-          if (/^["'"]/.test(input.charAt(pos))) {
-            result2 = input.charAt(pos);
+          if (input.charCodeAt(pos) === 39) {
+            result2 = "'";
             pos++;
           } else {
             result2 = null;
             if (reportFailures === 0) {
-              matchFailed("[\"'\"]");
+              matchFailed("\"'\"");
             }
           }
           reportFailures--;
@@ -409,13 +409,13 @@ exports.parse = function (input, startRule) {
             pos2 = pos;
             pos3 = pos;
             reportFailures++;
-            if (/^["'"]/.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
+            if (input.charCodeAt(pos) === 39) {
+              result2 = "'";
               pos++;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("[\"'\"]");
+                matchFailed("\"'\"");
               }
             }
             reportFailures--;
@@ -493,13 +493,13 @@ exports.parse = function (input, startRule) {
             pos2 = pos;
             pos3 = pos;
             reportFailures++;
-            if (/^['"']/.test(input.charAt(pos))) {
-              result2 = input.charAt(pos);
+            if (input.charCodeAt(pos) === 34) {
+              result2 = "\"";
               pos++;
             } else {
               result2 = null;
               if (reportFailures === 0) {
-                matchFailed("['\"']");
+                matchFailed("\"\\\"\"");
               }
             }
             reportFailures--;
@@ -534,13 +534,13 @@ exports.parse = function (input, startRule) {
               pos2 = pos;
               pos3 = pos;
               reportFailures++;
-              if (/^['"']/.test(input.charAt(pos))) {
-                result2 = input.charAt(pos);
+              if (input.charCodeAt(pos) === 34) {
+                result2 = "\"";
                 pos++;
               } else {
                 result2 = null;
                 if (reportFailures === 0) {
-                  matchFailed("['\"']");
+                  matchFailed("\"\\\"\"");
                 }
               }
               reportFailures--;
