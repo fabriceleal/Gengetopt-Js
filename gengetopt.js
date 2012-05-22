@@ -12,7 +12,7 @@ exports.parseArgs = function(args){
 			}).
 			join(" ");
 	//---
-	console.warn(treated);
+	//console.warn(treated);
 
 	try{
 		var parsed = parser.parse(treated);
@@ -23,7 +23,7 @@ exports.parseArgs = function(args){
 			transf[ tuple[0] ] = tuple[1];
 		});		
 
-		console.warn(JSON.stringify(transf));
+		//console.warn(JSON.stringify(transf));
 
 		return {
 			raw : args,
