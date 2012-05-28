@@ -1,0 +1,17 @@
+{
+  "author": "Fabrice Leal <fabrice.leal.ch@gmail.com> (http://fabriceleal.github.com)",
+  "name": "gengetopt-js",
+  "description": "Gengetopt-like lib for parsing command line args for Node",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fabriceleal/Gengetopt-Js.git"
+  },
+  "main": "gengetopt.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
