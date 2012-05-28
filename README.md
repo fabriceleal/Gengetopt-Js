@@ -5,6 +5,9 @@ A simple lib for parsing pairs of named command line arguments, for node.
 
 Check the dir release/ for the actual module's code. Anything outside that folder is not included in the module.
 
+## To Build
+You'll need the pegjs module.
+
 ## Instalation:
 
 npm install gengetopt-js
