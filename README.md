@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/fabriceleal/Gengetopt-Js.png)](http://travis-ci.org/fabriceleal/Gengetopt-Js)
 # Gengetopt-Js
 ### Gengetopt-like lib for parsing command line args for Node
 
